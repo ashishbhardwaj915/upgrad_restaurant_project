@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,4 +74,32 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void total_cost_of_first_selected_item_should_be_equal_to_119(){
+
+        Item FirstItem = restaurant.getMenu().get(0);
+        List<String> items=new ArrayList<>();
+        items.add(FirstItem.getName());
+        assertEquals(119,restaurant.getPriceOfSelectedItem(items));
+    }
+
+    @Test
+    public void total_cost_of_second_selected_item_should_be_equal_to_269(){
+
+        Item secondItem = restaurant.getMenu().get(1);
+        List<String> items=new ArrayList<>();
+        items.add(secondItem.getName());
+        assertEquals(269,restaurant.getPriceOfSelectedItem(items));
+    }
+
+    @Test
+    public void total_cost_of_all_selected_item_should_be_equal_to_388(){
+        Item FirstItem = restaurant.getMenu().get(0);
+        Item secondItem = restaurant.getMenu().get(1);
+        List<String> items=new ArrayList<>();
+        items.add(FirstItem.getName());
+        items.add(secondItem.getName());
+        assertEquals(388,restaurant.getPriceOfSelectedItem(items));
+    }
 }
