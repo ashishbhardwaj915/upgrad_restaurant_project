@@ -83,8 +83,13 @@ public class Restaurant {
 
     public int getPriceOfSelectedItem(List<String> selectedItems){
         int total=0;
-
-
+        for(Item item: menu) {
+            for(String selectedItem: selectedItems){
+                if(item.getName().equals(selectedItem)) {
+                    total+=item.getPrice();
+                }
+            }
+        }
         return total;
     }
 
